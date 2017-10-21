@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="content_css">
+    <content_css action="INSERT_OR_UPDATE">
+        <name>$snowogle_shcore</name>
+        <style>/**&#13;
+ * SyntaxHighlighter&#13;
+ * http://alexgorbatchev.com/SyntaxHighlighter&#13;
+ *&#13;
+ * SyntaxHighlighter is donationware. If you are using it, please donate.&#13;
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html&#13;
+ *&#13;
+ * @version&#13;
+ * 3.0.83 (July 02 2010)&#13;
+ * &#13;
+ * @copyright&#13;
+ * Copyright (C) 2004-2010 Alex Gorbatchev.&#13;
+ *&#13;
+ * @license&#13;
+ * Dual licensed under the MIT and GPL licenses.&#13;
+ */&#13;
+.syntaxhighlighter a,&#13;
+.syntaxhighlighter div,&#13;
+.syntaxhighlighter code,&#13;
+.syntaxhighlighter table,&#13;
+.syntaxhighlighter table td,&#13;
+.syntaxhighlighter table tr,&#13;
+.syntaxhighlighter table tbody,&#13;
+.syntaxhighlighter table thead,&#13;
+.syntaxhighlighter table caption,&#13;
+.syntaxhighlighter textarea {&#13;
+  -moz-border-radius: 0 0 0 0 !important;&#13;
+  -webkit-border-radius: 0 0 0 0 !important;&#13;
+  background: none !important;&#13;
+  border: 0 !important;&#13;
+  bottom: auto !important;&#13;
+  float: none !important;&#13;
+  height: auto !important;&#13;
+  left: auto !important;&#13;
+  line-height: 1.1em !important;&#13;
+  margin: 0 !important;&#13;
+  outline: 0 !important;&#13;
+  overflow: visible !important;&#13;
+  padding: 0 !important;&#13;
+  position: static !important;&#13;
+  right: auto !important;&#13;
+  text-align: left !important;&#13;
+  top: auto !important;&#13;
+  vertical-align: baseline !important;&#13;
+  width: auto !important;&#13;
+  box-sizing: content-box !important;&#13;
+  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace !important;&#13;
+  font-weight: normal !important;&#13;
+  font-style: normal !important;&#13;
+  font-size: 1em !important;&#13;
+  min-height: inherit !important;&#13;
+  min-height: auto !important;&#13;
+}&#13;
+&#13;
+.syntaxhighlighter {&#13;
+  width: 100% !important;&#13;
+  margin: 1em 0 1em 0 !important;&#13;
+  position: relative !important;&#13;
+  overflow: auto !important;&#13;
+  font-size: 1em !important;&#13;
+}&#13;
+.syntaxhighlighter.source {&#13;
+  overflow: hidden !important;&#13;
+}&#13;
+.syntaxhighlighter .bold {&#13;
+  font-weight: bold !important;&#13;
+}&#13;
+.syntaxhighlighter .italic {&#13;
+  font-style: italic !important;&#13;
+}&#13;
+.syntaxhighlighter .line {&#13;
+  white-space: pre !important;&#13;
+}&#13;
+.syntaxhighlighter table {&#13;
+  width: 100% !important;&#13;
+}&#13;
+.syntaxhighlighter table caption {&#13;
+  text-align: left !important;&#13;
+  padding: .5em 0 0.5em 1em !important;&#13;
+}&#13;
+.syntaxhighlighter table td.code {&#13;
+  width: 100% !important;&#13;
+}&#13;
+.syntaxhighlighter table td.code .container {&#13;
+  position: relative !important;&#13;
+}&#13;
+.syntaxhighlighter table td.code .container textarea {&#13;
+  box-sizing: border-box !important;&#13;
+  position: absolute !important;&#13;
+  left: 0 !important;&#13;
+  top: 0 !important;&#13;
+  width: 100% !important;&#13;
+  height: 100% !important;&#13;
+  border: none !important;&#13;
+  background: white !important;&#13;
+  padding-left: 1em !important;&#13;
+  overflow: hidden !important;&#13;
+  white-space: pre !important;&#13;
+}&#13;
+.syntaxhighlighter table td.gutter .line {&#13;
+  text-align: right !important;&#13;
+  padding: 0 0.5em 0 1em !important;&#13;
+}&#13;
+.syntaxhighlighter table td.code .line {&#13;
+  padding: 0 1em !important;&#13;
+}&#13;
+.syntaxhighlighter.nogutter td.code .container textarea, .syntaxhighlighter.nogutter td.code .line {&#13;
+  padding-left: 0em !important;&#13;
+}&#13;
+.syntaxhighlighter.show {&#13;
+  display: block !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed table {&#13;
+  display: none !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed .toolbar {&#13;
+  padding: 0.1em 0.8em 0em 0.8em !important;&#13;
+  font-size: 1em !important;&#13;
+  position: static !important;&#13;
+  width: auto !important;&#13;
+  height: auto !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed .toolbar span {&#13;
+  display: inline !important;&#13;
+  margin-right: 1em !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed .toolbar span a {&#13;
+  padding: 0 !important;&#13;
+  display: none !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed .toolbar span a.expandSource {&#13;
+  display: inline !important;&#13;
+}&#13;
+.syntaxhighlighter .toolbar {&#13;
+  position: absolute !important;&#13;
+  right: 1px !important;&#13;
+  top: 1px !important;&#13;
+  width: 11px !important;&#13;
+  height: 11px !important;&#13;
+  font-size: 10px !important;&#13;
+  z-index: 10 !important;&#13;
+}&#13;
+.syntaxhighlighter .toolbar span.title {&#13;
+  display: inline !important;&#13;
+}&#13;
+.syntaxhighlighter .toolbar a {&#13;
+  display: block !important;&#13;
+  text-align: center !important;&#13;
+  text-decoration: none !important;&#13;
+  padding-top: 1px !important;&#13;
+}&#13;
+.syntaxhighlighter .toolbar a.expandSource {&#13;
+  display: none !important;&#13;
+}&#13;
+.syntaxhighlighter.ie {&#13;
+  font-size: .9em !important;&#13;
+  padding: 1px 0 1px 0 !important;&#13;
+}&#13;
+.syntaxhighlighter.ie .toolbar {&#13;
+  line-height: 8px !important;&#13;
+}&#13;
+.syntaxhighlighter.ie .toolbar a {&#13;
+  padding-top: 0px !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .line.alt1 .content,&#13;
+.syntaxhighlighter.printing .line.alt2 .content,&#13;
+.syntaxhighlighter.printing .line.highlighted .number,&#13;
+.syntaxhighlighter.printing .line.highlighted.alt1 .content,&#13;
+.syntaxhighlighter.printing .line.highlighted.alt2 .content {&#13;
+  background: none !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .line .number {&#13;
+  color: #bbbbbb !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .line .content {&#13;
+  color: black !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .toolbar {&#13;
+  display: none !important;&#13;
+}&#13;
+.syntaxhighlighter.printing a {&#13;
+  text-decoration: none !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .plain, .syntaxhighlighter.printing .plain a {&#13;
+  color: black !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .comments, .syntaxhighlighter.printing .comments a {&#13;
+  color: #008200 !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .string, .syntaxhighlighter.printing .string a {&#13;
+  color: blue !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .keyword {&#13;
+  color: #006699 !important;&#13;
+  font-weight: bold !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .preprocessor {&#13;
+  color: gray !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .variable {&#13;
+  color: #aa7700 !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .value {&#13;
+  color: #009900 !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .functions {&#13;
+  color: #ff1493 !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .constants {&#13;
+  color: #0066cc !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .script {&#13;
+  font-weight: bold !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .color1, .syntaxhighlighter.printing .color1 a {&#13;
+  color: gray !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .color2, .syntaxhighlighter.printing .color2 a {&#13;
+  color: #ff1493 !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .color3, .syntaxhighlighter.printing .color3 a {&#13;
+  color: red !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .break, .syntaxhighlighter.printing .break a {&#13;
+  color: black !important;&#13;
+}</style>
+        <sys_class_name>content_css</sys_class_name>
+        <sys_created_by>avishek.dalal</sys_created_by>
+        <sys_created_on>2017-10-18 13:53:44</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>9db8bccfdb7147407236d9f0ce9619d7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>$snowogle_shcore</sys_name>
+        <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+        <sys_update_name>content_css_9db8bccfdb7147407236d9f0ce9619d7</sys_update_name>
+        <sys_updated_by>avishek.dalal</sys_updated_by>
+        <sys_updated_on>2017-10-18 13:53:44</sys_updated_on>
+        <type>local</type>
+        <url/>
+    </content_css>
+</record_update>

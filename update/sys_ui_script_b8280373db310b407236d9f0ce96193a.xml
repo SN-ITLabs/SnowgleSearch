@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_snc_snowogle.jQueryTypeWatch</name>
+        <script><![CDATA[/*
+*	TypeWatch 3
+*
+*	Examples/Docs: github.com/dennyferra/TypeWatch
+*  
+*  Dual licensed under the MIT and GPL licenses:
+*  http://www.opensource.org/licenses/mit-license.php
+*  http://www.gnu.org/licenses/gpl.html
+*/
+
+!function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(['jquery'], factory);
+    } else if (typeof exports === 'object') {
+        factory(require('jquery'));
+    } else {
+        factory(root.jQuery);
+    }
+}(this, function($j) {
+    'use strict';
+	$j.fn.typeWatch = function(o) {
+		// The default input types that are supported
+		var _supportedInputTypes =
+			['TEXT', 'TEXTAREA', 'PASSWORD', 'TEL', 'SEARCH', 'URL', 'EMAIL', 'DATETIME', 'DATE', 'MONTH', 'WEEK', 'TIME', 'DATETIME-LOCAL', 'NUMBER', 'RANGE', 'DIV'];
+
+		// Options
+		var options = $j.extend({
+			wait: 750,
+			callback: function() { },
+			highlight: true,
+			captureLength: 2,
+			allowSubmit: false,
+			inputTypes: _supportedInputTypes
+		}, o);
+
+		function checkElement(timer, override) {
+			var value = timer.type === 'DIV' 
+				? jQuery(timer.el).html()
+				: jQuery(timer.el).val();
+
+			// If has capture length and has changed value
+			// Or override and has capture length or allowSubmit option is true
+			// Or capture length is zero and changed value
+			if ((value.length >= options.captureLength && value != timer.text)
+				|| (override && (value.length >= options.captureLength || options.allowSubmit))
+				|| (value.length == 0 && timer.text))
+			{
+				timer.text = value;
+				timer.cb.call(timer.el, value);
+			}
+		};
+
+		function watchElement(elem) {
+			var elementType = (elem.type || elem.nodeName).toUpperCase();
+			if (jQuery.inArray(elementType, options.inputTypes) >= 0) {
+				
+				// Allocate timer element
+				var timer = {
+					timer: null,
+					text: (elementType === 'DIV') ? jQuery(elem).html() : jQuery(elem).val(),
+					cb: options.callback,
+					el: elem,
+					type: elementType,
+					wait: options.wait
+				};
+
+				// Set focus action (highlight)
+				if (options.highlight && elementType !== 'DIV')
+					jQuery(elem).focus(function() { this.select(); });
+
+				// Key watcher / clear and reset the timer
+				var startWatch = function(evt) {
+					var timerWait = timer.wait;
+					var overrideBool = false;
+					var evtElementType = elementType;
+
+					// If enter key is pressed and not a TEXTAREA or DIV
+					if (typeof evt.keyCode != 'undefined' && evt.keyCode == 13
+						&& evtElementType !== 'TEXTAREA' && elementType !== 'DIV')
+					{
+						console.log('OVERRIDE');
+						timerWait = 1;
+						overrideBool = true;
+					}
+
+					var timerCallbackFx = function() {
+						checkElement(timer, overrideBool)
+					}
+
+					// Clear timer
+					clearTimeout(timer.timer);
+					timer.timer = setTimeout(timerCallbackFx, timerWait);
+				};
+
+				jQuery(elem).on('keydown paste cut input', startWatch);
+			}
+		};
+
+		// Watch each element
+		return this.each(function() {
+			watchElement(this);
+		});
+	};
+});]]></script>
+        <script_name>jQueryTypeWatch</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>chaitanya</sys_created_by>
+        <sys_created_on>2017-10-21 08:17:05</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>b8280373db310b407236d9f0ce96193a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_snc_snowogle.jQueryTypeWatch</sys_name>
+        <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+        <sys_update_name>sys_ui_script_b8280373db310b407236d9f0ce96193a</sys_update_name>
+        <sys_updated_by>chaitanya</sys_updated_by>
+        <sys_updated_on>2017-10-21 08:17:05</sys_updated_on>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

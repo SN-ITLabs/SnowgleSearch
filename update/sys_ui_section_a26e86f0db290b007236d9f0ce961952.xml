@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="" section_id="a26e86f0db290b007236d9f0ce961952" sys_domain="global" table="x_snc_snowogle_results" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:11:48</sys_created_on>
+            <sys_id>00df0234db290b007236d9f0ce9619c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:11:48</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>script_table_name</element>
+            <position>1</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:11:48</sys_created_on>
+            <sys_id>80df0234db290b007236d9f0ce9619c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:11:48</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>last_sync_date</element>
+            <position>2</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:11:48</sys_created_on>
+            <sys_id>04df0234db290b007236d9f0ce9619c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:11:48</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>3</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:11:48</sys_created_on>
+            <sys_id>84df0234db290b007236d9f0ce9619c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:11:48</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>script_field_name</element>
+            <position>4</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:11:48</sys_created_on>
+            <sys_id>08df0234db290b007236d9f0ce9619c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:11:48</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>related_record</element>
+            <position>5</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:11:48</sys_created_on>
+            <sys_id>88df0234db290b007236d9f0ce9619c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:11:48</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>6</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:11:48</sys_created_on>
+            <sys_id>0cdf0234db290b007236d9f0ce9619c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:11:48</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>content</element>
+            <position>7</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:11:48</sys_created_on>
+            <sys_id>8cdf0234db290b007236d9f0ce9619c0</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:11:48</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>file_type</element>
+            <position>8</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-10-18 00:59:19</sys_created_on>
+            <sys_id>18978ebadbf907407236d9f0ce96199c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-10-18 00:59:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>file_name</element>
+            <position>9</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-10-18 00:59:20</sys_created_on>
+            <sys_id>d497c6fadbf907407236d9f0ce961940</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-10-18 00:59:20</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>url</element>
+            <position>10</position>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-10-19 15:31:29</sys_created_on>
+            <sys_id>8ac812dbdb3987407236d9f0ce9619e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_snc_snowogle_results" sys_domain="global" view="Default view">a26e86f0db290b007236d9f0ce961952</sys_ui_section>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-10-19 15:31:29</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_snc_snowogle_results</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>chaitanya</sys_created_by>
+            <sys_created_on>2017-09-29 10:05:41</sys_created_on>
+            <sys_customer_update>true</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>a26e86f0db290b007236d9f0ce961952</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_snc_snowogle_results</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+            <sys_update_name>sys_ui_section_a26e86f0db290b007236d9f0ce961952</sys_update_name>
+            <sys_updated_by>chaitanya</sys_updated_by>
+            <sys_updated_on>2017-09-29 10:05:41</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

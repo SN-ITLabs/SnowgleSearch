@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>false</global>
+        <name>x_snc_snowogle.$snowogle_js</name>
+        <script><![CDATA[/* set vars */
+var firstChar = false,
+    visible = false,
+    pissed = false,
+    $document = $j(document),
+    $spotlightWrapper = $j('#spotlight_wrapper'),
+    $spotlight = $j('#spotlight'),	
+	$spotlightContent = $j('#snowogle-search-content'),
+	$spotlightBody = $j('#snowogle-search-body'),
+	$spotlightCategories = $j("#snowogle-search-categories"),
+	$spotlightItems = $j('.snowogle-search-categories-items'),
+	$potlightSearchInfo = $j('#search-info'),
+	$bated = $j('#bated'),
+	$spotlightCodeArea = $j('#code-area');
+
+var _initialize = function(){
+	
+};
+
+//Set typeWatch to wait for the user to finish the search string to call the search function.
+$spotlight.typeWatch({
+	captureLength: 2,
+	callback: function(value) {
+		displayContent(value);
+	} 
+});
+
+var hideSpotlight = function(){
+  $spotlightWrapper.hide();
+  $spotlight.val('');
+  visible = false;
+	pissed = false;
+	hideContent();
+	$spotlightCodeArea.empty();
+	$spotlightCategories.empty();
+};
+
+var showSpotlight = function(){
+  $spotlightWrapper.show();
+  $spotlight.focus();
+  visible = true;
+};
+var contentJSON = {};
+var urlJSON = {};
+var currentControl = 0;
+var bated = false, batedCv = '';
+var _bateTextBox = function(message){
+	if(bated)
+		return true;
+	hideContent();
+	var cv = $spotlight.val();
+	batedCv = cv;
+	$spotlight.val(cv + '   - ' + message);
+	$spotlight.addClass('bat');
+	bated = true;
+};
+
+var _unbateTextBox = function(){
+	$spotlight.removeClass('bat');
+	$spotlight.val(batedCv);
+	batedCv = '';
+	bated = false;
+};
+
+
+var displayContent = function(){
+	var textValue = $spotlight.val();
+	currentControl = 0;
+	if(textValue.length == 0){
+		hideContent();
+		return true;
+	}
+	$spotlight.addClass("contented");
+	$spotlightCodeArea.empty();
+	$spotlightCategories.empty();
+	totalHighlights = 0;
+	//$spotlightBody.empty().html('<p>DUMMY TEXT: You have entered '+textValue+'. The respective content will be shown here.</p>');
+	var ga = new GlideAjax('x_snc_snowogle.SearchUtil');
+	ga.addParam('sysparm_name','search');
+	ga.addParam('sysparm_searchtoken',textValue);
+	ga.getXMLAnswer(function(data){
+		var result = JSON.parse(data);
+		//console.log(data);
+		if(result) {
+			var itemId = 0;
+			contentJSON = {};
+			urlJSON = {};
+			$spotlightCategories.empty();
+			var resultCounts = Object.keys(result).length;
+			if(resultCounts == 0){
+				//_bateTextBox('no results');
+				return true;
+			}
+			$spotlightContent.show();
+			for(var file in result){
+				$spotlightCategories.append('<div class="row snowogle-search-categories-category"><div class="col-xs-12 col-sm-12 col-md-12">'+file+'</div></div>');
+				var thisFileTypeBucket = result[file];
+				for(var i=0; i<thisFileTypeBucket.length; i++){
+					var item = thisFileTypeBucket[i];
+					$spotlightCategories.append('<div class="row snowogle-search-categories-items" id="item_'+itemId+'"><div class="col-xs-12 col-sm-12 col-md-12">'+item.fileName+'</div></div>');
+					contentJSON["item_"+itemId] = item.content;
+					urlJSON["item_"+itemId] = item.url;
+					itemId++;
+				}
+			}
+			$spotlightCategories.scrollTop(0);
+			highlightCode("item_0");
+		}else{
+			//_bateTextBox('network error');
+		}
+	});
+};
+
+var hideContent = function(){
+	$spotlight.removeClass("contented");
+	$spotlightContent.hide();
+	$spotlightCodeArea.empty();
+	$spotlightCategories.empty();
+};
+var currentId = null;
+var totalHighlights = 0;
+var highlightCode = function(thisId){
+	$j('.snowogle-search-categories-items').removeClass("active");
+	$j('.snowogle-search-categories-items#'+thisId).addClass('active');
+	var _key = $spotlight.val();
+	var content = contentJSON[thisId];
+	currentControl = 0;
+	var highlighted = hljs.highlight('javascript', content, true).value;
+	var highlightedCode = "";
+	var splittedHighlightedCode = highlighted.split(_key);//.join('<span class="custom-highlight-keys">'+_key+'</span>');
+	totalHighlights = splittedHighlightedCode.length - 1;
+	for(var i=0; i<splittedHighlightedCode.length; i++){
+		var highlighter = '<span class="custom-highlight-keys" id="snowogle-highlight-'+i+'">'+_key+'</span>';
+		if( i == totalHighlights)
+			highlighter = '';
+		highlightedCode = highlightedCode + splittedHighlightedCode[i] + highlighter;
+	}
+	//console.log(highlightedCode);
+	$spotlightCodeArea.empty().html(highlightedCode);
+	$j("#snowogle-search-description").scrollTop(0);
+	currentId = thisId;
+	_navTag(0);
+};
+$document.on('click', '.snowogle-search-categories-items', function(){
+	var thisId = $j(this).attr("id");
+	if(thisId == currentId)
+		return true;
+	highlightCode(thisId);
+});
+
+$document.on('dblclick', '.snowogle-search-categories-items', function(){
+	var thisId = $j(this).attr("id");
+	var url2Open = urlJSON[thisId];
+	window.open(url2Open);
+});
+var _navTag = function(point){
+	if(totalHighlights == 0){
+		$potlightSearchInfo.empty().html('no matches found');
+		return true;
+	}
+	currentControl = point;
+	var displayPoint = point + 1;
+	var result = ' match';
+	if(totalHighlights > 1)
+		result = ' matches';
+	$potlightSearchInfo.empty().html('showing '+displayPoint + ' of ' + totalHighlights + result);
+	window.location.href = "#snowogle-highlight-"+currentControl;
+};
+$document.on('click', '.control-prev', function(){
+	var target = (currentControl - 1);
+	if(target < 0)
+		target = totalHighlights - 1;
+	_navTag(target);
+	
+});
+
+$document.on('click', '.control-next', function(){
+	var target = (currentControl + 1) % totalHighlights;
+	_navTag(target);
+});
+
+/* add listener for keydown to detect shortcut */
+$document.on('keydown',function(event){
+  //17 = CTRL
+  //32 = SPACE
+  //27 = ESC
+  
+  if(event.which == 27){
+    hideSpotlight();
+  }
+  //save char code in var if it is ctrl
+  if(event.which == 17){
+    firstChar = event.which;
+  }
+  
+  //if firstchar is ctrl and the current keydown event char is space, continue
+  if(firstChar == 17 && event.which == 32){
+	//console.log("working ");
+    //check if spotlight is already visible
+    if(!visible){
+
+      //show spotlight
+      showSpotlight();
+
+    } else {
+
+      //hide spotlight
+      hideSpotlight();
+
+    }
+    
+    //delete firstchar var
+    firstChar = false;
+    
+  }  	
+});
+	
+// delete firstchar var on keyup to ensure "shortcut" behaviour and that ther spotlight doesn't show up if not wanted
+$document.on('keyup',function(){
+  firstChar = false;
+});
+
+// stop propagating if clicked within the spotlight
+$spotlight.on('click', function(e){
+    e.stopPropagation();
+});
+
+// hide spotlight when clicked anywhere
+$document.on('click',function(){
+  //hideSpotlight();
+});
+]]></script>
+        <script_name>$snowogle_js</script_name>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>chaitanya</sys_created_by>
+        <sys_created_on>2017-10-21 05:28:49</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>9902223bdbbdc7407236d9f0ce961918</sys_id>
+        <sys_mod_count>17</sys_mod_count>
+        <sys_name>x_snc_snowogle.$snowogle_js</sys_name>
+        <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+        <sys_update_name>sys_ui_script_9902223bdbbdc7407236d9f0ce961918</sys_update_name>
+        <sys_updated_by>chaitanya</sys_updated_by>
+        <sys_updated_on>2017-10-21 09:18:11</sys_updated_on>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

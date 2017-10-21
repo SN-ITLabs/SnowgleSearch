@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="content_css">
+    <content_css action="INSERT_OR_UPDATE">
+        <name>$snowogle_shdefault</name>
+        <style>/**&#13;
+ * SyntaxHighlighter&#13;
+ * http://alexgorbatchev.com/SyntaxHighlighter&#13;
+ *&#13;
+ * SyntaxHighlighter is donationware. If you are using it, please donate.&#13;
+ * http://alexgorbatchev.com/SyntaxHighlighter/donate.html&#13;
+ *&#13;
+ * @version&#13;
+ * 3.0.83 (July 02 2010)&#13;
+ * &#13;
+ * @copyright&#13;
+ * Copyright (C) 2004-2010 Alex Gorbatchev.&#13;
+ *&#13;
+ * @license&#13;
+ * Dual licensed under the MIT and GPL licenses.&#13;
+ */&#13;
+.syntaxhighlighter {&#13;
+  background-color: white !important;&#13;
+}&#13;
+.syntaxhighlighter .line.alt1 {&#13;
+  background-color: white !important;&#13;
+}&#13;
+.syntaxhighlighter .line.alt2 {&#13;
+  background-color: white !important;&#13;
+}&#13;
+.syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {&#13;
+  background-color: #e0e0e0 !important;&#13;
+}&#13;
+.syntaxhighlighter .line.highlighted.number {&#13;
+  color: black !important;&#13;
+}&#13;
+.syntaxhighlighter table caption {&#13;
+  color: black !important;&#13;
+}&#13;
+.syntaxhighlighter .gutter {&#13;
+  color: #afafaf !important;&#13;
+}&#13;
+.syntaxhighlighter .gutter .line {&#13;
+  border-right: 3px solid #6ce26c !important;&#13;
+}&#13;
+.syntaxhighlighter .gutter .line.highlighted {&#13;
+  background-color: #6ce26c !important;&#13;
+  color: white !important;&#13;
+}&#13;
+.syntaxhighlighter.printing .line .content {&#13;
+  border: none !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed {&#13;
+  overflow: visible !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed .toolbar {&#13;
+  color: blue !important;&#13;
+  background: white !important;&#13;
+  border: 1px solid #6ce26c !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed .toolbar a {&#13;
+  color: blue !important;&#13;
+}&#13;
+.syntaxhighlighter.collapsed .toolbar a:hover {&#13;
+  color: red !important;&#13;
+}&#13;
+.syntaxhighlighter .toolbar {&#13;
+  color: white !important;&#13;
+  background: #6ce26c !important;&#13;
+  border: none !important;&#13;
+}&#13;
+.syntaxhighlighter .toolbar a {&#13;
+  color: white !important;&#13;
+}&#13;
+.syntaxhighlighter .toolbar a:hover {&#13;
+  color: black !important;&#13;
+}&#13;
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {&#13;
+  color: black !important;&#13;
+}&#13;
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {&#13;
+  color: #008200 !important;&#13;
+}&#13;
+.syntaxhighlighter .string, .syntaxhighlighter .string a {&#13;
+  color: blue !important;&#13;
+}&#13;
+.syntaxhighlighter .keyword {&#13;
+  color: #006699 !important;&#13;
+}&#13;
+.syntaxhighlighter .preprocessor {&#13;
+  color: gray !important;&#13;
+}&#13;
+.syntaxhighlighter .variable {&#13;
+  color: #aa7700 !important;&#13;
+}&#13;
+.syntaxhighlighter .value {&#13;
+  color: #009900 !important;&#13;
+}&#13;
+.syntaxhighlighter .functions {&#13;
+  color: #ff1493 !important;&#13;
+}&#13;
+.syntaxhighlighter .constants {&#13;
+  color: #0066cc !important;&#13;
+}&#13;
+.syntaxhighlighter .script {&#13;
+  font-weight: bold !important;&#13;
+  color: #006699 !important;&#13;
+  background-color: none !important;&#13;
+}&#13;
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a {&#13;
+  color: gray !important;&#13;
+}&#13;
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a {&#13;
+  color: #ff1493 !important;&#13;
+}&#13;
+.syntaxhighlighter .color3, .syntaxhighlighter .color3 a {&#13;
+  color: red !important;&#13;
+}&#13;
+&#13;
+.syntaxhighlighter .keyword {&#13;
+  font-weight: bold !important;&#13;
+}</style>
+        <sys_class_name>content_css</sys_class_name>
+        <sys_created_by>avishek.dalal</sys_created_by>
+        <sys_created_on>2017-10-18 13:54:27</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>f5e8fccfdb7147407236d9f0ce9619a7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>$snowogle_shdefault</sys_name>
+        <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+        <sys_update_name>content_css_f5e8fccfdb7147407236d9f0ce9619a7</sys_update_name>
+        <sys_updated_by>avishek.dalal</sys_updated_by>
+        <sys_updated_on>2017-10-18 13:54:27</sys_updated_on>
+        <type>local</type>
+        <url/>
+    </content_css>
+</record_update>

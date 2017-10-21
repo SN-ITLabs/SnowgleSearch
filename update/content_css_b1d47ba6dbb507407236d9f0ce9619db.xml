@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="content_css">
+    <content_css action="INSERT_OR_UPDATE">
+        <name>snowogle_style</name>
+        <style>body{&#13;
+   /* background-image: url('sg.background.jpg');&#13;
+    background-repeat: no-repeat;&#13;
+    background-size: cover;*/&#13;
+     &#13;
+}&#13;
+&#13;
+.vertical-center{&#13;
+  position: fixed;&#13;
+  width: 100%;&#13;
+  top: 10%;&#13;
+  z-index: 10000;&#13;
+}&#13;
+.snowogle-search-bar{&#13;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;&#13;
+  display: block;&#13;
+  width: 100%;&#13;
+  height: 56px;&#13;
+  margin: auto;&#13;
+  border-radius: 5px;&#13;
+  appearance: none;&#13;
+  box-shadow: 0 25px 60px 10px rgba(0,0,0,0.5);&#13;
+  border: 1px solid rgba(0,0,0,0.2);&#13;
+  outline: none;&#13;
+  font-size: 28px;&#13;
+  color: #000;&#13;
+  background-color: #f8f5f4;&#13;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkViZW5lXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjIuNyAyMi41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAyMi43IDIyLjUiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxjaXJjbGUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgY3g9IjguMSIgY3k9IjguNCIgcj0iNi44Ii8+PGxpbmUgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY2NzY2IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgeDE9IjEzLjIiIHkxPSIxMi45IiB4Mj0iMjEuNSIgeTI9IjIxLjQiLz48L3N2Zz4=);&#13;
+  background-position: left 17px center;&#13;
+  background-repeat: no-repeat;&#13;
+  background-size: 2.5%;&#13;
+  padding: 0 52px;&#13;
+}&#13;
+.snowogle-search-bar.bat{&#13;
+  color: silver;&#13;
+&#13;
+}&#13;
+.snowogle-search-bar.contented{&#13;
+  border-radius: 5px 5px 0px 0px;&#13;
+  box-shadow:none;&#13;
+  width: 100%;&#13;
+&#13;
+}&#13;
+&#13;
+#snowogle-search-body{font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;background-color: white;background-color: #f8f5f4;height: 500px;max-height: 500px;/* padding: 0px; */margin: auto;box-shadow: 0 25px 60px 10px rgba(0,0,0,0.5);border-left: 1px solid rgba(0,0,0,0.2);border-bottom: 1px solid rgba(0,0,0,0.2);border-right: 1px solid rgba(0,0,0,0.2);border-radius: 0px 0px 5px 5px;/* overflow-y: scroll; */}&#13;
+input-placeholder {&#13;
+    color: #666666;&#13;
+  }&#13;
+&#13;
+#spotlight_wrapper, &#13;
+#snowogle-search-content{&#13;
+  display: none;&#13;
+}&#13;
+&#13;
+.title{&#13;
+  color: white;&#13;
+  font-size: 56px;&#13;
+  opacity: 0.8;&#13;
+}&#13;
+.sub-title{&#13;
+  color: white;&#13;
+  font-size: 28px;&#13;
+   opacity: 0.8;&#13;
+}&#13;
+.snowogle-search-head{&#13;
+  padding: 0%;&#13;
+}&#13;
+.snowogle-search-categories{&#13;
+padding-left: 0;&#13;
+}&#13;
+#snowogle-search-categories{&#13;
+    padding-left: 0;&#13;
+    overflow-y: scroll;&#13;
+    max-height: 500px;&#13;
+    /* clear: both; */&#13;
+}&#13;
+.snowogle-search-categories-category{&#13;
+  text-align: left;&#13;
+  font-size: 14px;&#13;
+  /* font-weight: bold; *//* margin-left: 10px; */&#13;
+  background-color: #eee;&#13;
+  padding-left: 1%;&#13;
+  }&#13;
+.snowogle-search-categories-items{&#13;
+  text-align: left;&#13;
+    font-size: 12px;&#13;
+    cursor: pointer;&#13;
+    padding-left: 2%;&#13;
+}&#13;
+&#13;
+.snowogle-search-categories-items:hover{&#13;
+  color: white;&#13;
+background-color: #4ea8fc;&#13;
+}&#13;
+.snowogle-search-categories-items.active{&#13;
+color: white;&#13;
+background-color: #2770b5;&#13;
+}&#13;
+&#13;
+#snowogle-search-description{&#13;
+  text-align: left;&#13;
+  font-size: 14px;&#13;
+  max-height: 475px;&#13;
+  overflow-y: scroll;&#13;
+word-break: break-all;&#13;
+}&#13;
+#snowogle-search-controls{&#13;
+  text-align: right;&#13;
+  font-size: 14px;&#13;
+  max-height: 18px;&#13;
+  margin-bottom: 5px;&#13;
+  -webkit-user-select: none; /* webkit (safari, chrome) browsers */&#13;
+  -moz-user-select: none; /* mozilla browsers */&#13;
+  -khtml-user-select: none; /* webkit (konqueror) browsers */&#13;
+  -ms-user-select: none; /* IE10+ */&#13;
+}&#13;
+&#13;
+pre{&#13;
+  border: none;&#13;
+  overflow-x: hidden;&#13;
+}&#13;
+.custom-highlight-keys{&#13;
+  background-color:yellow;&#13;
+  border: #eee&#13;
+}&#13;
+.search-controls{&#13;
+  font-family: FontAwesome;&#13;
+    font-style: normal;&#13;
+    font-weight: normal;&#13;
+    text-decoration: inherit;&#13;
+/*--adjust as necessary--*/&#13;
+    color: silver;&#13;
+    font-size: 12px;&#13;
+    padding-right: 5px;&#13;
+    top: 10px;&#13;
+    left: 0;&#13;
+    cursor: pointer;&#13;
+}&#13;
+.search-controls:hover{&#13;
+  color: black&#13;
+}&#13;
+.search-controls.control-prev:before {&#13;
+    content: "\f053";&#13;
+    &#13;
+}&#13;
+.search-controls.control-next:before {&#13;
+    content: "\f054";&#13;
+}&#13;
+#search-info{&#13;
+  font-size: 12px;&#13;
+  font-weight: bold;&#13;
+  padding-right: 10px;&#13;
+}&#13;
+</style>
+        <sys_class_name>content_css</sys_class_name>
+        <sys_created_by>avishek.dalal</sys_created_by>
+        <sys_created_on>2017-10-17 14:18:27</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>b1d47ba6dbb507407236d9f0ce9619db</sys_id>
+        <sys_mod_count>42</sys_mod_count>
+        <sys_name>snowogle_style</sys_name>
+        <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+        <sys_update_name>content_css_b1d47ba6dbb507407236d9f0ce9619db</sys_update_name>
+        <sys_updated_by>avishek.dalal</sys_updated_by>
+        <sys_updated_on>2017-10-19 09:30:14</sys_updated_on>
+        <type>local</type>
+        <url/>
+    </content_css>
+</record_update>

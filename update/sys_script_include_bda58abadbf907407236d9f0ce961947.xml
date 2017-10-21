@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_snowogle.SearchUtil</api_name>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>SearchUtil</name>
+        <script><![CDATA[var SearchUtil = Class.create();
+SearchUtil.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+	search: function() {
+		var searchToken = this.getParameter('sysparm_searchtoken');		
+		return this.searchString(searchToken);
+	},
+	
+	searchString: function(searchToken){
+		var result = {}, fileType, fileName;
+		var gr = new GlideRecord('x_snc_snowogle_results');
+		gr.addQuery('IR_AND_OR_QUERY', '"' + searchToken + '"');		
+		gr.query();
+		while(gr.next()) {
+			fileType = gr.getValue('file_type');
+			fileName = gr.getValue('file_name');
+			if(!result[fileType]) {
+				result[fileType] = [];
+			}
+			result[fileType].push({'fileName': fileName, 'content': gr.getValue('content'), 'url': gr.getValue('url')});		
+		}
+		return global.JSON.stringify(result);
+	},
+    type: 'SearchUtil'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>chaitanya</sys_created_by>
+        <sys_created_on>2017-10-18 01:55:23</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>bda58abadbf907407236d9f0ce961947</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>SearchUtil</sys_name>
+        <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+        <sys_update_name>sys_script_include_bda58abadbf907407236d9f0ce961947</sys_update_name>
+        <sys_updated_by>chaitanya</sys_updated_by>
+        <sys_updated_on>2017-10-19 15:36:33</sys_updated_on>
+    </sys_script_include>
+</record_update>

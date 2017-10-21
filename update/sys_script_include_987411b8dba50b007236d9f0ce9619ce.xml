@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_snowogle.SyncContent</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>SyncContent</name>
+        <script><![CDATA[var SyncContent = Class.create();
+SyncContent.prototype = {
+	initialize: function() {
+	},
+	
+	sync: function() {
+		this.syncScriptMetaData();
+	},
+	
+	syncScriptMetaData: function() {
+		var scanStats, newRecGr;
+		var rulesGr = new GlideRecord('x_snc_snowogle_scripts_to_include');
+		rulesGr.addActiveQuery();
+		rulesGr.query();
+		while(rulesGr.next()) {
+			var tableGr = new GlideRecord(rulesGr.table_name);
+			if(rulesGr.condition){
+				tableGr.addEncodedQuery(rulesGr.condition);	
+				tableGr.addEncodedQuery("^" + rulesGr.field_name_for_table + "NOT LIKEx_snc_snowogle_results^EQ");
+			}else{
+				tableGr.addEncodedQuery(rulesGr.condition_string);
+				tableGr.addEncodedQuery("^" + rulesGr.field_name_for_table + "NOT LIKEx_snc_snowogle_results^EQ");			
+			}
+			tableGr.query();
+			while(tableGr.next()) {
+				scanStats = new GlideRecord('x_snc_snowogle_scan_status');
+				scanStats.addQuery('table_name', tableGr.getValue(rulesGr.getValue('field_name_for_table')));
+				scanStats.addQuery('field_name', tableGr.getValue(rulesGr.getValue('field_name_for_script')));
+				scanStats.addNotNullQuery('last_sync_date');
+				scanStats.query();
+				if(scanStats.next()) {					
+					var lastSyncDate = new GlideDateTime(scanStats.last_sync_date).getDisplayValueInternal().split(' ');
+					if(lastSyncDate && lastSyncDate.length == 2) {
+						var checkNewRecordsCondition = "sys_updated_on>=javascript:gs.dateGenerate('" + lastSyncDate[0] + "','" + lastSyncDate[1] + "')^ORDERBYDESCsys_updated_on";
+						
+						var tableName = tableGr.getValue(rulesGr.getValue('field_name_for_table'));							
+						gs.info(checkNewRecordsCondition);
+						gs.info(tableName);
+						newRecGr = new GlideRecord(tableName);
+						newRecGr.addEncodedQuery(checkNewRecordsCondition);
+						newRecGr.query();
+						if(newRecGr.getRowCount() > 0){
+							scanStats.setValue('status', 'inprogress');
+							//Process first record by updating the scan status of the table with the last updated date of the recent record.
+							newRecGr.next();
+							scanStats.setValue('last_sync_date', newRecGr.sys_updated_on);
+							this.processContent(newRecGr, scanStats);
+							while(newRecGr.next()){
+								this.processContent(newRecGr, scanStats);
+							}
+							scanStats.setValue('total_count', parseInt(scanStats.getValue('total_count')) + newRecGr.getRowCount());
+							scanStats.setValue('status', 'synced');
+							scanStats.update();
+						}
+					}
+				}else{
+					//New scan record. Need to add all the records after creating this scan table definition.
+					newRecGr = new GlideRecord(tableGr.getValue(rulesGr.getValue('field_name_for_table')));
+					newRecGr.addEncodedQuery('ORDERBYDESCsys_updated_on');
+					newRecGr.query();
+					if(newRecGr.getRowCount() > 0){
+						//Process first record by updating the scan status of the table with the last updated date of the recent record.
+						scanStats = new GlideRecord('x_snc_snowogle_scan_status');
+						scanStats.initialize();
+						scanStats.setValue('table_name', tableGr.getValue(rulesGr.getValue('field_name_for_table')));
+						scanStats.setValue('field_name', tableGr.getValue(rulesGr.getValue('field_name_for_script')));
+						scanStats.setValue('total_count', 0);
+						scanStats.setValue('status', 'inprogress');
+						scanStats.insert();
+											
+						newRecGr.next();
+						scanStats.setValue('last_sync_date', newRecGr.sys_updated_on);
+						this.processContent(newRecGr, scanStats);
+						while(newRecGr.next()){
+							this.processContent(newRecGr, scanStats);
+						}
+						scanStats.setValue('total_count', newRecGr.getRowCount());
+						scanStats.setValue('status', 'synced');
+						scanStats.update();	
+					}
+				}
+			}
+		}
+	},
+	
+	processContent:function(dataRecord, metaRecord) {
+		var content =  dataRecord.getValue(metaRecord.getValue('field_name'));
+		if(content) {
+			var gr  = new GlideRecord('x_snc_snowogle_results');
+			gr.addQuery('script_table_name', metaRecord.getValue('table_name'));
+			gr.addQuery('script_field_name', metaRecord.getValue('field_name'));		
+			gr.addQuery('related_record', dataRecord.getValue('sys_id'));
+			gr.query();
+			if(!gr.next()) {
+				gr.initialize();
+			}		
+			gr.setValue('content', content);
+			gr.setValue('last_sync_date', dataRecord.getValue('sys_updated_on'));
+			gr.setValue('related_record', dataRecord.getValue('sys_id'));
+			gr.setValue('script_field_name', metaRecord.getValue('field_name'));
+			gr.setValue('script_table_name', metaRecord.getValue('table_name'));
+			gr.update();			
+		}
+	},
+	
+	type: 'SyncContent'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>chaitanya</sys_created_by>
+        <sys_created_on>2017-09-29 10:19:10</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>987411b8dba50b007236d9f0ce9619ce</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>SyncContent</sys_name>
+        <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+        <sys_update_name>sys_script_include_987411b8dba50b007236d9f0ce9619ce</sys_update_name>
+        <sys_updated_by>chaitanya</sys_updated_by>
+        <sys_updated_on>2017-10-16 15:14:07</sys_updated_on>
+    </sys_script_include>
+</record_update>

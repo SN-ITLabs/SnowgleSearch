@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Scan Status" max_length="40" name="x_snc_snowogle_scan_status" type="collection">
+        <element label="Field Name" max_length="40" name="field_name" type="string"/>
+        <element label="Last Sync Date" max_length="40" name="last_sync_date" type="glide_date_time"/>
+        <element choice="1" default="not_synced" label="Status" max_length="40" name="status" type="choice">
+            <choice>
+                <element label="In Progress" value="inprogress"/>
+                <element label="Not Sync'd" value="not_synced"/>
+                <element label="Sync'd" value="synced"/>
+            </choice>
+        </element>
+        <element label="Table Name" max_length="40" name="table_name" type="string"/>
+        <element label="Total Count" max_length="40" name="total_count" type="integer"/>
+    </element>
+</database>

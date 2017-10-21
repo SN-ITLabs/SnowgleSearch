@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[/* set vars */
+var firstChar = false,
+    visible = false,
+    pissed = false,
+    $document = $j(document),
+    $spotlightWrapper = $j('#spotlight_wrapper'),
+    $spotlight = $j('#spotlight');
+	$spotlightContent = $j('#snowogle-search-content');
+	$spotlightBody = $j('#snowogle-search-body');
+
+var hideSpotlight = function(){
+  $spotlightWrapper.hide();
+  $spotlight.val('');
+  visible = false;
+	pissed = false;
+	hideContent();
+};
+
+var showSpotlight = function(){
+  $spotlightWrapper.show();
+  $spotlight.focus();
+  visible = true;
+};
+
+var displayContent = function(){
+	var textValue = $spotlight.val();
+	if(textValue.length == 0){
+		hideContent();
+		return true;
+	}
+	$spotlight.addClass("contented");
+	$spotlightContent.show();
+	$spotlightBody.empty().html('<p>DUMMY TEXT: You have entered '+textValue+'. The respective content will be shown here.</p>');
+};
+
+var hideContent = function(){
+	$spotlight.removeClass("contented");
+	$spotlightContent.hide();
+};
+
+
+/* add listener for keydown to detect shortcut */
+$document.on('keydown',function(event){
+  //17 = CTRL
+  //32 = SPACE
+  //27 = ESC
+  
+  if(event.which == 27){
+    hideSpotlight();
+  }
+  //save char code in var if it is ctrl
+  if(event.which == 17){
+    firstChar = event.which;
+  }
+  
+  //if firstchar is ctrl and the current keydown event char is space, continue
+  if(firstChar == 17 && event.which == 32){
+
+    //check if spotlight is already visible
+    if(!visible){
+
+      //show spotlight
+      showSpotlight();
+
+    } else {
+
+      //hide spotlight
+      hideSpotlight();
+
+    }
+    
+    //delete firstchar var
+    firstChar = false;
+    
+  }  
+  
+  
+  if(event.which == 13 && !pissed){
+    displayContent();
+    pissed = true;
+  }
+	
+	var typingTimer;                //timer identifier
+	var doneTypingInterval = 1500;  
+
+	//on keyup, start the countdown
+	$spotlight.on('keyup', function () {
+	    clearTimeout(typingTimer);
+		if($spotlight.val().length == 0){
+			hideContent();
+			return true;
+		}
+	  typingTimer = setTimeout(displayContent, doneTypingInterval);
+	});
+
+	//on keydown, clear the countdown 
+	$spotlight.on('keydown', function () {
+	    clearTimeout(typingTimer);
+		if($spotlight.val().length == 0){
+			hideContent();
+			return true;
+		}
+	});
+  
+});
+
+// delete firstchar var on keyup to ensure "shortcut" behaviour and that ther spotlight doesn't show up if not wanted
+$document.on('keyup',function(){
+  firstChar = false;
+});
+
+// stop propagating if clicked within the spotlight
+$spotlight.on('click', function(e){
+    e.stopPropagation();
+});
+
+// hide spotlight when clicked anywhere
+$document.on('click',function(){
+  hideSpotlight();
+});
+]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_snc_snowogle_home.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	 <link type="text/css" href="b1d47ba6dbb507407236d9f0ce9619db.cssdbx" rel="stylesheet"></link>
+	<div class="container-fluid">
+		<div class="row"></div><div class="row"></div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 text-center title">
+				Snowogle Search
+			</div>
+		</div>
+		<div class="row"></div>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 text-center sub-title">
+				Press Ctrl + Space to start Snowgling
+			</div>
+		</div>
+		<div class="row vertical-center">
+			<div class="col-xs-12 col-sm-12 col-md-12 text-center" id="spotlight_wrapper">
+				<div class="snowogle-search row">
+					<div class="snowogle-search-head col-xs-3 col-sm-3 col-md-3"></div>
+					<div class="snowogle-search-head col-xs-6 col-sm-6 col-md-6">
+						<input type="text" class="snowogle-search-bar" placeholder="Snowogle Search" id="spotlight"/>
+					</div>
+					<div class="snowogle-search-head col-xs-3 col-sm-3 col-md-3"></div>
+				</div>
+				<div class="row" id="snowogle-search-content">
+					<div class="snowogle-search-head col-xs-3 col-sm-3 col-md-3"></div>
+					<div class="col-xs-6 col-sm-6 col-md-6" id="snowogle-search-body">Content wil be shown here. Dummy text.</div>
+					<div class="snowogle-search-head col-xs-3 col-sm-3 col-md-3"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</j:jelly>]]></html>
+        <name>home</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>avishek.dalal</sys_created_by>
+        <sys_created_on>2017-10-17 14:14:07</sys_created_on>
+        <sys_customer_update>true</sys_customer_update>
+        <sys_id>2193ff66dbb507407236d9f0ce96196a</sys_id>
+        <sys_mod_count>38</sys_mod_count>
+        <sys_name>home</sys_name>
+        <sys_package display_value="Snowogle" source="x_snc_snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Snowogle">04171868dbe5c7007236d9f0ce9619ca</sys_scope>
+        <sys_update_name>sys_ui_page_2193ff66dbb507407236d9f0ce96196a</sys_update_name>
+        <sys_updated_by>avishek.dalal</sys_updated_by>
+        <sys_updated_on>2017-10-17 16:32:33</sys_updated_on>
+    </sys_ui_page>
+</record_update>

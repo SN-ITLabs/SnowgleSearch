@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Results" max_length="40" name="x_snc_snowogle_results" sizeclass="8211" text_index="true" type="collection">
+        <element label="Content" max_length="10000" name="content" text_index="true" type="script"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;var val = current.related_record?current.related_record.getDisplayValue():&quot;&quot;;&#13;&#10;&#9;var fileName = &quot;&quot;;&#13;&#10;&#9;if(val &amp;&amp; val.indexOf(&quot;:&quot;) &gt;= 0) {&#13;&#10;&#9;&#9;fileName = val.slice(val.indexOf(&quot;:&quot;) + 1).trim();&#13;&#10;&#9;}&#13;&#10;&#9;return fileName;&#13;&#10;&#13;&#10;})(current);" label="File Name" max_length="500" name="file_name" text_index="true" type="string" virtual="true"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;var val = current.related_record?current.related_record.getDisplayValue():&quot;&quot;;&#13;&#10;&#9;var fileType = &quot;&quot;;&#13;&#10;&#9;if(val &amp;&amp; val.indexOf(&quot;:&quot;) &gt;= 0) {&#13;&#10;&#9;&#9;fileType = val.slice(0, val.indexOf(&quot;:&quot;)).trim();&#13;&#10;&#9;}&#13;&#10;&#9;return fileType;&#13;&#10;&#13;&#10;})(current);" label="File Type" max_length="200" name="file_type" text_index="true" type="string" virtual="true"/>
+        <element label="Last Sync Date" max_length="40" name="last_sync_date" type="glide_date_time"/>
+        <element dependent="script_table_name" dependent_on_field="script_table_name" label="Related Record " max_length="32" name="related_record" type="document_id" use_dependent_field="true"/>
+        <element label="Script Field Name" max_length="40" name="script_field_name" type="string"/>
+        <element label="Script Table Name" max_length="40" name="script_table_name" type="string"/>
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#9;var url = gs.getProperty('glide.servlet.uri');&#13;&#10;&#9;url = url + current.getValue('script_table_name') + &quot;.do?sys_id=&quot; + current.getValue('related_record');&#13;&#10;&#9;return url;  // return the calculated value&#13;&#10;&#13;&#10;})(current);" label="URL" max_length="300" name="url" read_only="true" type="string" virtual="true"/>
+        <index name="index">
+            <element name="related_record"/>
+        </index>
+    </element>
+</database>
